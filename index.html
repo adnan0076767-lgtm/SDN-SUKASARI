@@ -2,31 +2,35 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
 <title>SDN Sukasari | Website Resmi Sekolah</title>
 
-<meta name="description" content="Website resmi SDN Sukasari, Jl. Galanggang RT 02 RW 16, Desa Galanggang, Batujajar. Informasi profil, kegiatan, program, berita, galeri, dan kontak sekolah.">
-<meta name="robots" content="index, follow">
-<meta name="theme-color" content="#0b4f9c">
+<meta name="description" content="Website resmi SDN Sukasari, Jl. Galanggang RT 02 RW 16, Desa Galanggang, Batujajar. Informasi profil, program, kegiatan, berita, galeri, dan kontak sekolah.">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#0757a8">
 
 <meta property="og:title" content="SDN Sukasari | Website Resmi Sekolah">
 <meta property="og:description" content="Website resmi SDN Sukasari, Galanggang, Batujajar.">
 <meta property="og:type" content="website">
+<meta property="og:image" content="SUKASARI=PREVIEW.jpg">
 
 <style>
 :root{
-  --primary:#0b4f9c;
-  --primary-dark:#083b76;
-  --secondary:#0f766e;
-  --accent:#f4b400;
-  --bg:#f5f8fc;
-  --white:#ffffff;
-  --text:#172033;
-  --muted:#667085;
-  --border:#e4eaf2;
-  --shadow:0 12px 35px rgba(15,35,65,.10);
-  --radius:18px;
+  --blue:#0757a8;
+  --blue-dark:#04366d;
+  --blue-deep:#021d3c;
+  --cyan:#12a8e0;
+  --gold:#f5bd32;
+  --green:#138a70;
+  --bg:#f4f8fc;
+  --white:#fff;
+  --text:#142238;
+  --muted:#68778c;
+  --border:#dfe8f2;
+  --shadow:0 18px 50px rgba(7,47,91,.12);
+  --shadow-lg:0 30px 80px rgba(2,29,60,.20);
+  --radius:22px;
 }
 
 *{
@@ -36,11 +40,20 @@
   scroll-behavior:smooth;
 }
 
+html{
+  scroll-padding-top:85px;
+}
+
 body{
-  font-family:Arial,Helvetica,sans-serif;
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
   background:var(--bg);
   color:var(--text);
-  line-height:1.6;
+  line-height:1.65;
+  overflow-x:hidden;
+}
+
+body.no-scroll{
+  overflow:hidden;
 }
 
 a{
@@ -48,49 +61,85 @@ a{
   text-decoration:none;
 }
 
+button{
+  font:inherit;
+}
+
 img{
   max-width:100%;
   display:block;
 }
 
-/* TOP BAR */
+.container{
+  width:min(1180px,calc(100% - 40px));
+  margin:auto;
+}
+
+section{
+  position:relative;
+}
+
+/* =========================
+   SCROLL PROGRESS
+========================= */
+.scroll-progress{
+  position:fixed;
+  top:0;
+  left:0;
+  width:0;
+  height:4px;
+  background:linear-gradient(90deg,var(--gold),var(--cyan));
+  z-index:3000;
+}
+
+/* =========================
+   TOPBAR
+========================= */
 .topbar{
-  background:var(--primary-dark);
+  background:var(--blue-deep);
   color:#fff;
   font-size:13px;
 }
 
 .topbar-inner{
-  max-width:1180px;
+  width:min(1180px,calc(100% - 40px));
   margin:auto;
-  padding:9px 20px;
+  min-height:38px;
   display:flex;
-  justify-content:space-between;
   align-items:center;
+  justify-content:space-between;
   gap:15px;
 }
 
-.topbar span{
-  opacity:.95;
+.topbar a{
+  opacity:.92;
+  transition:.2s;
 }
 
-/* NAVBAR */
+.topbar a:hover{
+  opacity:1;
+  color:#fff;
+}
+
+/* =========================
+   NAVBAR
+========================= */
 .navbar{
   position:sticky;
   top:0;
-  z-index:1000;
-  background:rgba(255,255,255,.96);
-  backdrop-filter:blur(12px);
-  border-bottom:1px solid var(--border);
+  z-index:2000;
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(223,232,242,.9);
 }
 
 .nav-inner{
-  max-width:1180px;
+  width:min(1180px,calc(100% - 40px));
   margin:auto;
-  padding:13px 20px;
+  min-height:76px;
   display:flex;
-  justify-content:space-between;
   align-items:center;
+  justify-content:space-between;
   gap:20px;
 }
 
@@ -98,27 +147,40 @@ img{
   display:flex;
   align-items:center;
   gap:12px;
-  min-width:230px;
+  min-width:245px;
 }
 
 .logo-mark{
-  width:48px;
-  height:48px;
-  border-radius:14px;
-  background:linear-gradient(135deg,var(--primary),#1683dc);
-  color:#fff;
+  width:50px;
+  height:50px;
+  border-radius:15px;
+  overflow:hidden;
+  background:linear-gradient(145deg,#fff,#eaf4ff);
+  border:2px solid #d7e8fa;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-weight:800;
-  font-size:16px;
-  box-shadow:0 8px 20px rgba(11,79,156,.25);
+  box-shadow:0 10px 25px rgba(7,87,168,.16);
+}
+
+.logo-mark img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.logo-mark-fallback{
+  color:var(--blue);
+  font-size:13px;
+  font-weight:900;
 }
 
 .logo-text strong{
   display:block;
+  color:var(--blue-dark);
   font-size:16px;
-  color:var(--primary-dark);
+  line-height:1.2;
+  letter-spacing:.3px;
 }
 
 .logo-text small{
@@ -127,58 +189,70 @@ img{
 }
 
 .nav-links{
+  list-style:none;
   display:flex;
   align-items:center;
-  gap:5px;
-  list-style:none;
+  gap:4px;
 }
 
 .nav-links a{
   display:block;
-  padding:9px 11px;
-  border-radius:9px;
-  font-size:14px;
-  font-weight:600;
-  color:#344054;
+  padding:10px 11px;
+  border-radius:11px;
+  color:#35445a;
+  font-size:13px;
+  font-weight:700;
   transition:.2s;
 }
 
 .nav-links a:hover{
-  color:var(--primary);
-  background:#edf5ff;
+  background:#edf6ff;
+  color:var(--blue);
+}
+
+.nav-cta{
+  background:var(--blue)!important;
+  color:#fff!important;
+  box-shadow:0 8px 20px rgba(7,87,168,.20);
 }
 
 .menu-btn{
   display:none;
+  width:45px;
+  height:45px;
   border:0;
-  background:#edf5ff;
-  color:var(--primary);
-  font-size:24px;
-  width:44px;
-  height:44px;
-  border-radius:10px;
+  border-radius:13px;
+  background:#edf6ff;
+  color:var(--blue);
   cursor:pointer;
+  font-size:23px;
 }
 
-/* HERO */
+/* =========================
+   HERO
+========================= */
 .hero{
-  position:relative;
+  min-height:690px;
   overflow:hidden;
-  background:
-    radial-gradient(circle at 85% 20%,rgba(255,255,255,.18),transparent 25%),
-    linear-gradient(135deg,#083b76 0%,#0b4f9c 48%,#1178bd 100%);
   color:#fff;
+  background:
+    radial-gradient(circle at 80% 20%,rgba(18,168,224,.28),transparent 30%),
+    radial-gradient(circle at 15% 85%,rgba(245,189,50,.13),transparent 25%),
+    linear-gradient(135deg,#021d3c 0%,#04366d 48%,#0757a8 100%);
 }
 
 .hero::before{
   content:"";
   position:absolute;
-  width:400px;
-  height:400px;
+  width:600px;
+  height:600px;
+  right:-220px;
+  top:-240px;
+  border:1px solid rgba(255,255,255,.09);
   border-radius:50%;
-  background:rgba(255,255,255,.05);
-  right:-150px;
-  top:-150px;
+  box-shadow:
+    0 0 0 70px rgba(255,255,255,.025),
+    0 0 0 140px rgba(255,255,255,.018);
 }
 
 .hero::after{
@@ -186,52 +260,78 @@ img{
   position:absolute;
   width:280px;
   height:280px;
-  border-radius:50%;
-  background:rgba(255,255,255,.04);
-  left:-120px;
+  left:-130px;
   bottom:-150px;
+  border-radius:50%;
+  background:rgba(18,168,224,.09);
+  filter:blur(3px);
 }
 
-.hero-inner{
-  max-width:1180px;
+.hero-grid{
+  width:min(1180px,calc(100% - 40px));
+  min-height:690px;
   margin:auto;
-  min-height:570px;
-  padding:75px 20px;
+  padding:80px 0;
   display:grid;
-  grid-template-columns:1.25fr .75fr;
+  grid-template-columns:1.05fr .95fr;
   align-items:center;
-  gap:60px;
+  gap:65px;
   position:relative;
   z-index:2;
+}
+
+.hero-content{
+  animation:heroIn .8s ease both;
+}
+
+@keyframes heroIn{
+  from{
+    opacity:0;
+    transform:translateY(25px);
+  }
+  to{
+    opacity:1;
+    transform:none;
+  }
 }
 
 .hero-badge{
   display:inline-flex;
   align-items:center;
-  gap:8px;
-  background:rgba(255,255,255,.13);
-  border:1px solid rgba(255,255,255,.2);
-  padding:8px 13px;
+  gap:9px;
+  padding:9px 14px;
   border-radius:999px;
-  font-size:13px;
-  margin-bottom:20px;
+  background:rgba(255,255,255,.10);
+  border:1px solid rgba(255,255,255,.20);
+  color:#eaf8ff;
+  font-size:12px;
+  font-weight:800;
+  margin-bottom:22px;
+}
+
+.hero-badge-dot{
+  width:8px;
+  height:8px;
+  background:#52e1a8;
+  border-radius:50%;
+  box-shadow:0 0 12px #52e1a8;
 }
 
 .hero h1{
-  font-size:clamp(36px,5vw,64px);
-  line-height:1.08;
-  letter-spacing:-1.5px;
-  margin-bottom:20px;
+  font-size:clamp(42px,5.4vw,72px);
+  line-height:1.02;
+  letter-spacing:-2.4px;
+  margin-bottom:24px;
 }
 
 .hero h1 span{
-  color:#ffd45c;
+  color:#ffd866;
 }
 
-.hero p{
-  max-width:680px;
-  font-size:18px;
-  color:rgba(255,255,255,.9);
+.hero-description{
+  max-width:650px;
+  color:rgba(255,255,255,.83);
+  font-size:17px;
   margin-bottom:30px;
 }
 
@@ -243,129 +343,125 @@ img{
 
 .btn{
   display:inline-flex;
-  justify-content:center;
   align-items:center;
-  gap:8px;
-  padding:13px 20px;
-  border-radius:10px;
-  font-weight:700;
+  justify-content:center;
+  gap:9px;
+  min-height:48px;
+  padding:12px 20px;
+  border-radius:13px;
   border:1px solid transparent;
+  font-weight:800;
+  font-size:14px;
   cursor:pointer;
-  transition:.2s;
+  transition:.25s;
 }
 
 .btn-primary{
   background:#fff;
-  color:var(--primary-dark);
+  color:var(--blue-dark);
+  box-shadow:0 14px 30px rgba(0,0,0,.16);
 }
 
 .btn-primary:hover{
-  transform:translateY(-2px);
-  box-shadow:0 10px 25px rgba(0,0,0,.18);
+  transform:translateY(-3px);
+  box-shadow:0 18px 35px rgba(0,0,0,.22);
 }
 
 .btn-outline{
-  border-color:rgba(255,255,255,.5);
   color:#fff;
-  background:rgba(255,255,255,.05);
+  background:rgba(255,255,255,.07);
+  border-color:rgba(255,255,255,.30);
 }
 
 .btn-outline:hover{
-  background:rgba(255,255,255,.13);
+  background:rgba(255,255,255,.14);
+  transform:translateY(-3px);
 }
 
-.hero-card{
-  background:rgba(255,255,255,.1);
-  border:1px solid rgba(255,255,255,.2);
-  border-radius:25px;
-  padding:25px;
-  backdrop-filter:blur(12px);
-  box-shadow:0 25px 60px rgba(0,0,0,.15);
-}
-
-.school-emblem{
-  width:125px;
-  height:125px;
-  margin:0 auto 20px;
-  border-radius:50%;
-  border:3px solid rgba(255,255,255,.6);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:15px;
-  font-size:18px;
-  font-weight:800;
-  background:rgba(255,255,255,.1);
-}
-
-.hero-card h3{
-  text-align:center;
-  margin-bottom:5px;
-}
-
-.hero-card p{
-  text-align:center;
-  font-size:13px;
-  margin:0;
-}
-
-/* GENERAL */
-.container{
-  max-width:1180px;
-  margin:auto;
-  padding:80px 20px;
-}
-
-.section-head{
-  text-align:center;
-  max-width:720px;
-  margin:0 auto 45px;
-}
-
-.section-label{
-  display:inline-block;
-  color:var(--primary);
-  font-size:13px;
-  font-weight:800;
-  text-transform:uppercase;
-  letter-spacing:1.2px;
-  margin-bottom:9px;
-}
-
-.section-head h2{
-  font-size:clamp(28px,4vw,40px);
-  line-height:1.15;
-  margin-bottom:12px;
-}
-
-.section-head p{
-  color:var(--muted);
-}
-
-/* QUICK INFO */
-.quick{
-  margin-top:-45px;
+/* HERO PHOTO */
+.hero-photo-wrap{
   position:relative;
-  z-index:5;
+  animation:photoIn 1s .15s ease both;
+}
+
+@keyframes photoIn{
+  from{
+    opacity:0;
+    transform:translateX(35px) scale(.97);
+  }
+  to{
+    opacity:1;
+    transform:none;
+  }
+}
+
+.hero-photo{
+  position:relative;
+  border-radius:30px;
+  padding:10px;
+  background:linear-gradient(145deg,rgba(255,255,255,.30),rgba(255,255,255,.06));
+  box-shadow:var(--shadow-lg);
+}
+
+.hero-photo img{
+  width:100%;
+  aspect-ratio:4/3;
+  object-fit:cover;
+  border-radius:22px;
+  border:1px solid rgba(255,255,255,.25);
+}
+
+.hero-photo-badge{
+  position:absolute;
+  left:-22px;
+  bottom:28px;
+  background:#fff;
+  color:var(--text);
+  padding:15px 17px;
+  border-radius:16px;
+  box-shadow:0 18px 40px rgba(0,0,0,.22);
+  min-width:205px;
+}
+
+.hero-photo-badge strong{
+  display:block;
+  color:var(--blue-dark);
+  font-size:14px;
+}
+
+.hero-photo-badge span{
+  display:block;
+  color:var(--muted);
+  font-size:12px;
+  margin-top:2px;
+}
+
+/* =========================
+   QUICK CARDS
+========================= */
+.quick{
+  margin-top:-55px;
+  position:relative;
+  z-index:10;
 }
 
 .quick-grid{
-  max-width:1100px;
+  width:min(1080px,calc(100% - 40px));
   margin:auto;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:22px;
+  box-shadow:var(--shadow);
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  background:#fff;
-  border-radius:18px;
-  box-shadow:var(--shadow);
   overflow:hidden;
 }
 
 .quick-item{
   padding:25px;
   display:flex;
-  gap:15px;
   align-items:center;
+  gap:15px;
   border-right:1px solid var(--border);
 }
 
@@ -374,69 +470,171 @@ img{
 }
 
 .quick-icon{
-  width:46px;
-  height:46px;
+  width:48px;
+  height:48px;
   flex:none;
-  border-radius:12px;
-  background:#eaf3ff;
-  color:var(--primary);
   display:flex;
   align-items:center;
   justify-content:center;
+  border-radius:14px;
+  background:#edf6ff;
   font-size:21px;
 }
 
 .quick-item strong{
   display:block;
+  color:var(--text);
   font-size:14px;
 }
 
 .quick-item span{
+  color:var(--muted);
+  font-size:12px;
+}
+
+/* =========================
+   SECTION
+========================= */
+.section{
+  padding:100px 0;
+}
+
+.section.white{
+  background:#fff;
+}
+
+.section.blue-light{
+  background:#edf6ff;
+}
+
+.section-head{
+  max-width:760px;
+  margin:0 auto 48px;
+  text-align:center;
+}
+
+.section-label{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  color:var(--blue);
+  font-size:12px;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:1.5px;
+  margin-bottom:10px;
+}
+
+.section-label::before,
+.section-label::after{
+  content:"";
+  width:20px;
+  height:2px;
+  background:var(--gold);
+}
+
+.section-head h2{
+  font-size:clamp(30px,4vw,43px);
+  line-height:1.12;
+  letter-spacing:-1px;
+  margin-bottom:12px;
+}
+
+.section-head p{
+  color:var(--muted);
+  font-size:15px;
+}
+
+/* =========================
+   ABOUT
+========================= */
+.about-grid{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:25px;
+}
+
+.about-main{
+  background:
+    linear-gradient(145deg,#fff,#f7fbff);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:34px;
+  box-shadow:0 10px 35px rgba(15,35,65,.06);
+}
+
+.about-main h3{
+  color:var(--blue-dark);
+  font-size:24px;
+  margin-bottom:15px;
+}
+
+.about-main p{
+  color:#5b6a7e;
+}
+
+.highlight{
+  margin-top:22px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+
+.highlight-item{
+  padding:15px;
+  background:#edf6ff;
+  border-radius:14px;
+}
+
+.highlight-item strong{
   display:block;
+  color:var(--blue);
+  font-size:18px;
+}
+
+.highlight-item span{
+  color:var(--muted);
+  font-size:11px;
+}
+
+.about-side{
+  display:grid;
+  gap:15px;
+}
+
+.mini-card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:25px;
+  box-shadow:0 8px 25px rgba(15,35,65,.05);
+}
+
+.mini-card-icon{
+  width:46px;
+  height:46px;
+  border-radius:13px;
+  background:#edf6ff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:21px;
+  margin-bottom:14px;
+}
+
+.mini-card h3{
+  font-size:17px;
+  margin-bottom:6px;
+}
+
+.mini-card p{
   color:var(--muted);
   font-size:13px;
 }
 
-/* ABOUT */
-.about-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:35px;
-  align-items:stretch;
-}
-
-.info-card{
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:var(--radius);
-  padding:30px;
-  box-shadow:0 5px 20px rgba(15,35,65,.05);
-}
-
-.info-card h3{
-  margin-bottom:14px;
-  color:var(--primary-dark);
-}
-
-.info-card p{
-  color:#596579;
-}
-
-.highlight-box{
-  margin-top:20px;
-  padding:18px;
-  background:#f0f7ff;
-  border-left:4px solid var(--primary);
-  border-radius:10px;
-  color:#41526b;
-  font-size:14px;
-}
-
-/* VISION */
-.vision-section{
-  background:#fff;
-}
-
+/* =========================
+   VISION
+========================= */
 .vision-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -446,31 +644,33 @@ img{
 .vision-card{
   padding:35px;
   border-radius:var(--radius);
-  background:#f7faff;
+  background:#f7fbff;
   border:1px solid var(--border);
 }
 
-.vision-card .number{
-  width:48px;
-  height:48px;
-  border-radius:12px;
-  background:var(--primary);
-  color:#fff;
+.vision-number{
+  width:52px;
+  height:52px;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-weight:800;
+  border-radius:15px;
+  background:var(--blue);
+  color:#fff;
+  font-weight:900;
   margin-bottom:18px;
+  box-shadow:0 10px 22px rgba(7,87,168,.20);
 }
 
 .vision-card h3{
+  font-size:25px;
   margin-bottom:12px;
-  font-size:24px;
 }
 
 .vision-card p,
 .vision-card li{
-  color:#596579;
+  color:#5b6a7e;
+  font-size:14px;
 }
 
 .vision-card ul{
@@ -478,10 +678,12 @@ img{
 }
 
 .vision-card li{
-  margin-bottom:8px;
+  margin-bottom:9px;
 }
 
-/* PROGRAMS */
+/* =========================
+   PROGRAM
+========================= */
 .program-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -489,139 +691,167 @@ img{
 }
 
 .program-card{
+  position:relative;
+  overflow:hidden;
   background:#fff;
   border:1px solid var(--border);
   border-radius:var(--radius);
-  padding:25px;
+  padding:27px;
   transition:.25s;
 }
 
+.program-card::after{
+  content:"";
+  position:absolute;
+  width:100px;
+  height:100px;
+  right:-50px;
+  top:-50px;
+  background:#edf6ff;
+  border-radius:50%;
+}
+
 .program-card:hover{
-  transform:translateY(-5px);
+  transform:translateY(-7px);
   box-shadow:var(--shadow);
+  border-color:#c9def3;
 }
 
 .program-icon{
   width:55px;
   height:55px;
-  border-radius:14px;
-  background:#edf5ff;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:25px;
-  margin-bottom:17px;
+  background:#edf6ff;
+  border-radius:16px;
+  font-size:24px;
+  margin-bottom:18px;
+  position:relative;
+  z-index:1;
 }
 
 .program-card h3{
   font-size:18px;
-  margin-bottom:8px;
+  margin-bottom:7px;
 }
 
 .program-card p{
   color:var(--muted);
-  font-size:14px;
+  font-size:13px;
 }
 
-/* TEACHERS */
-.teacher-section{
-  background:#fff;
-}
-
+/* =========================
+   TEACHER
+========================= */
 .teacher-grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:20px;
+  gap:18px;
 }
 
 .teacher-card{
-  border:1px solid var(--border);
-  border-radius:var(--radius);
   overflow:hidden;
   background:#fff;
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  transition:.25s;
+}
+
+.teacher-card:hover{
+  transform:translateY(-5px);
+  box-shadow:var(--shadow);
 }
 
 .teacher-photo{
-  height:190px;
-  background:
-    linear-gradient(135deg,#dcecff,#eef5ff);
+  height:175px;
+  background:linear-gradient(145deg,#e5f2ff,#f6fbff);
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:48px;
+  font-size:50px;
 }
 
 .teacher-info{
-  padding:20px;
+  padding:18px;
   text-align:center;
 }
 
 .teacher-info h3{
-  font-size:16px;
+  font-size:15px;
   margin-bottom:4px;
 }
 
 .teacher-info p{
   color:var(--muted);
-  font-size:13px;
+  font-size:12px;
 }
 
-/* NEWS */
+/* =========================
+   NEWS
+========================= */
 .news-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:22px;
+  gap:20px;
 }
 
 .news-card{
+  overflow:hidden;
   background:#fff;
   border:1px solid var(--border);
   border-radius:var(--radius);
-  overflow:hidden;
   transition:.25s;
 }
 
 .news-card:hover{
-  transform:translateY(-4px);
+  transform:translateY(-6px);
   box-shadow:var(--shadow);
 }
 
 .news-image{
-  height:170px;
-  background:linear-gradient(135deg,#dcecff,#f3f8ff);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:42px;
+  height:190px;
+  overflow:hidden;
+  background:#eaf3ff;
+}
+
+.news-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:.5s;
+}
+
+.news-card:hover .news-image img{
+  transform:scale(1.06);
 }
 
 .news-body{
-  padding:22px;
+  padding:21px;
 }
 
-.news-date{
-  color:var(--primary);
-  font-size:12px;
-  font-weight:700;
+.news-tag{
+  color:var(--blue);
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:.8px;
 }
 
 .news-body h3{
-  margin:8px 0;
+  margin:7px 0;
   font-size:18px;
 }
 
 .news-body p{
   color:var(--muted);
-  font-size:14px;
+  font-size:13px;
 }
 
-/* AGENDA */
-.agenda-section{
-  background:#f0f6fd;
-}
-
+/* =========================
+   AGENDA
+========================= */
 .agenda-list{
-  max-width:850px;
+  max-width:880px;
   margin:auto;
   display:grid;
   gap:14px;
@@ -630,29 +860,32 @@ img{
 .agenda-item{
   background:#fff;
   border:1px solid var(--border);
-  border-radius:15px;
-  padding:18px 20px;
+  border-radius:17px;
+  padding:17px 20px;
   display:flex;
   align-items:center;
-  gap:18px;
+  gap:17px;
+  box-shadow:0 6px 20px rgba(15,35,65,.04);
 }
 
 .agenda-date{
-  min-width:65px;
-  text-align:center;
-  background:var(--primary);
-  color:#fff;
+  width:65px;
+  flex:none;
   padding:8px;
-  border-radius:10px;
+  border-radius:12px;
+  background:var(--blue);
+  color:#fff;
+  text-align:center;
 }
 
 .agenda-date strong{
   display:block;
-  font-size:20px;
+  font-size:21px;
+  line-height:1.1;
 }
 
 .agenda-date span{
-  font-size:10px;
+  font-size:9px;
   text-transform:uppercase;
 }
 
@@ -662,11 +895,54 @@ img{
 }
 
 .agenda-info p{
-  font-size:13px;
   color:var(--muted);
+  font-size:12px;
 }
 
-/* GALLERY */
+/* =========================
+   GALLERY
+========================= */
+.gallery-feature{
+  margin-bottom:18px;
+  border-radius:25px;
+  overflow:hidden;
+  position:relative;
+  box-shadow:var(--shadow);
+  cursor:pointer;
+  background:#dfeaf5;
+}
+
+.gallery-feature img{
+  width:100%;
+  height:430px;
+  object-fit:cover;
+  transition:.6s;
+}
+
+.gallery-feature:hover img{
+  transform:scale(1.025);
+}
+
+.gallery-feature-caption{
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  padding:55px 25px 23px;
+  color:#fff;
+  background:linear-gradient(transparent,rgba(0,0,0,.72));
+}
+
+.gallery-feature-caption strong{
+  display:block;
+  font-size:21px;
+}
+
+.gallery-feature-caption span{
+  font-size:12px;
+  opacity:.85;
+}
+
 .gallery-grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
@@ -675,33 +951,81 @@ img{
 
 .gallery-item{
   aspect-ratio:1/1;
-  border-radius:15px;
-  background:linear-gradient(135deg,#dcecff,#f4f8fd);
-  border:1px solid var(--border);
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  color:#7890aa;
-  text-align:center;
-  padding:15px;
+  border-radius:17px;
   overflow:hidden;
+  position:relative;
+  background:linear-gradient(145deg,#e5f1fc,#f7fbff);
+  border:1px solid var(--border);
+  cursor:pointer;
 }
 
-.gallery-item span{
-  font-size:35px;
-  margin-bottom:8px;
+.gallery-item img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:.45s;
 }
 
-.gallery-item small{
-  font-size:12px;
+.gallery-item:hover img{
+  transform:scale(1.07);
 }
 
-/* CONTACT */
-.contact-section{
+.gallery-overlay{
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  padding:35px 12px 12px;
+  color:#fff;
+  background:linear-gradient(transparent,rgba(0,0,0,.70));
+  font-size:11px;
+  font-weight:800;
+}
+
+/* =========================
+   LIGHTBOX
+========================= */
+.lightbox{
+  position:fixed;
+  inset:0;
+  background:rgba(1,14,29,.92);
+  backdrop-filter:blur(8px);
+  z-index:4000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:25px;
+}
+
+.lightbox.active{
+  display:flex;
+}
+
+.lightbox img{
+  max-width:min(1100px,94vw);
+  max-height:84vh;
+  object-fit:contain;
+  border-radius:15px;
+  box-shadow:0 30px 100px rgba(0,0,0,.55);
+}
+
+.lightbox-close{
+  position:absolute;
+  top:20px;
+  right:20px;
+  width:45px;
+  height:45px;
+  border:0;
+  border-radius:50%;
   background:#fff;
+  color:#111;
+  font-size:25px;
+  cursor:pointer;
 }
 
+/* =========================
+   CONTACT
+========================= */
 .contact-grid{
   display:grid;
   grid-template-columns:.85fr 1.15fr;
@@ -709,57 +1033,62 @@ img{
 }
 
 .contact-card{
-  background:#f7faff;
+  background:#f7fbff;
   border:1px solid var(--border);
   border-radius:var(--radius);
   padding:30px;
 }
 
+.contact-card h3{
+  font-size:22px;
+  margin-bottom:20px;
+}
+
 .contact-list{
   display:grid;
-  gap:18px;
-  margin-top:22px;
+  gap:17px;
 }
 
 .contact-item{
   display:flex;
-  gap:13px;
   align-items:flex-start;
+  gap:12px;
 }
 
 .contact-icon{
-  width:42px;
-  height:42px;
+  width:43px;
+  height:43px;
   flex:none;
-  border-radius:10px;
-  background:#eaf3ff;
-  color:var(--primary);
   display:flex;
   align-items:center;
   justify-content:center;
+  background:#e8f3ff;
+  color:var(--blue);
+  border-radius:12px;
 }
 
 .contact-item strong{
   display:block;
-  font-size:14px;
+  font-size:13px;
 }
 
 .contact-item span,
 .contact-item a{
   color:var(--muted);
-  font-size:13px;
+  font-size:12px;
   word-break:break-word;
 }
 
 .map-box{
   min-height:100%;
   border-radius:var(--radius);
-  background:
-    linear-gradient(rgba(11,79,156,.05) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(11,79,156,.05) 1px,transparent 1px),
-    #f4f8fc;
-  background-size:35px 35px;
+  overflow:hidden;
   border:1px solid var(--border);
+  background:
+    linear-gradient(rgba(7,87,168,.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(7,87,168,.05) 1px,transparent 1px),
+    #f5f9fd;
+  background-size:35px 35px;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -768,11 +1097,11 @@ img{
 }
 
 .map-content{
-  max-width:400px;
+  max-width:420px;
 }
 
-.map-content .map-icon{
-  font-size:55px;
+.map-icon{
+  font-size:50px;
   margin-bottom:12px;
 }
 
@@ -782,44 +1111,49 @@ img{
 
 .map-content p{
   color:var(--muted);
-  font-size:14px;
+  font-size:13px;
+  margin-bottom:20px;
 }
 
-/* FOOTER */
+/* =========================
+   FOOTER
+========================= */
 footer{
-  background:#072f60;
+  background:#021d3c;
   color:#fff;
 }
 
 .footer-main{
-  max-width:1180px;
+  width:min(1180px,calc(100% - 40px));
   margin:auto;
-  padding:55px 20px 35px;
+  padding:55px 0 35px;
   display:grid;
   grid-template-columns:1.3fr 1fr 1fr;
   gap:45px;
 }
 
 .footer-brand h3{
-  font-size:21px;
-  margin-bottom:10px;
+  font-size:22px;
+  margin-bottom:9px;
 }
 
 .footer-brand p{
-  color:rgba(255,255,255,.7);
-  font-size:14px;
   max-width:430px;
+  color:rgba(255,255,255,.67);
+  font-size:13px;
 }
 
 .footer-col h4{
-  margin-bottom:15px;
+  margin-bottom:14px;
+  font-size:14px;
 }
 
 .footer-col a{
   display:block;
-  color:rgba(255,255,255,.72);
-  font-size:14px;
+  color:rgba(255,255,255,.68);
+  font-size:13px;
   margin-bottom:8px;
+  transition:.2s;
 }
 
 .footer-col a:hover{
@@ -827,51 +1161,74 @@ footer{
 }
 
 .footer-bottom{
-  border-top:1px solid rgba(255,255,255,.12);
+  border-top:1px solid rgba(255,255,255,.10);
   padding:17px 20px;
   text-align:center;
-  color:rgba(255,255,255,.65);
-  font-size:12px;
+  color:rgba(255,255,255,.55);
+  font-size:11px;
 }
 
-/* BACK TO TOP */
+/* =========================
+   BACK TOP
+========================= */
 .top-btn{
   position:fixed;
   right:20px;
   bottom:20px;
-  width:45px;
-  height:45px;
+  width:46px;
+  height:46px;
   border:0;
   border-radius:50%;
-  background:var(--primary);
+  background:var(--blue);
   color:#fff;
   font-size:20px;
   cursor:pointer;
-  box-shadow:0 8px 20px rgba(0,0,0,.18);
-  display:none;
-  z-index:900;
+  box-shadow:0 12px 30px rgba(0,0,0,.20);
+  z-index:1500;
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(10px);
+  transition:.25s;
 }
 
 .top-btn.show{
-  display:block;
+  opacity:1;
+  visibility:visible;
+  transform:none;
 }
 
-/* MOBILE */
-@media(max-width:900px){
+/* =========================
+   REVEAL
+========================= */
+.reveal{
+  opacity:0;
+  transform:translateY(25px);
+  transition:.7s ease;
+}
+
+.reveal.visible{
+  opacity:1;
+  transform:none;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media(max-width:1000px){
 
   .nav-links{
     position:absolute;
-    top:75px;
-    left:15px;
-    right:15px;
-    background:#fff;
-    border:1px solid var(--border);
-    border-radius:15px;
-    box-shadow:var(--shadow);
-    padding:10px;
+    top:76px;
+    left:20px;
+    right:20px;
     display:none;
     flex-direction:column;
     align-items:stretch;
+    padding:10px;
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:17px;
+    box-shadow:var(--shadow);
   }
 
   .nav-links.active{
@@ -879,20 +1236,20 @@ footer{
   }
 
   .nav-links a{
-    padding:12px 14px;
+    padding:13px 14px;
   }
 
   .menu-btn{
     display:block;
   }
 
-  .hero-inner{
+  .hero-grid{
     grid-template-columns:1fr;
     text-align:center;
-    padding:65px 20px 90px;
+    gap:45px;
   }
 
-  .hero p{
+  .hero-description{
     margin-left:auto;
     margin-right:auto;
   }
@@ -901,29 +1258,10 @@ footer{
     justify-content:center;
   }
 
-  .hero-card{
-    max-width:420px;
+  .hero-photo-wrap{
+    max-width:680px;
     width:100%;
     margin:auto;
-  }
-
-  .quick-grid{
-    grid-template-columns:1fr;
-  }
-
-  .quick-item{
-    border-right:0;
-    border-bottom:1px solid var(--border);
-  }
-
-  .quick-item:last-child{
-    border-bottom:0;
-  }
-
-  .about-grid,
-  .vision-grid,
-  .contact-grid{
-    grid-template-columns:1fr;
   }
 
   .program-grid{
@@ -938,16 +1276,28 @@ footer{
     grid-template-columns:1fr;
   }
 
+  .contact-grid{
+    grid-template-columns:1fr;
+  }
+
+  .map-box{
+    min-height:330px;
+  }
+
   .gallery-grid{
     grid-template-columns:repeat(2,1fr);
   }
-
-  .footer-main{
-    grid-template-columns:1fr 1fr;
-  }
 }
 
-@media(max-width:600px){
+@media(max-width:700px){
+
+  .container,
+  .nav-inner,
+  .topbar-inner,
+  .hero-grid,
+  .footer-main{
+    width:min(100% - 30px,1180px);
+  }
 
   .topbar-inner{
     justify-content:center;
@@ -967,46 +1317,128 @@ footer{
   }
 
   .logo-text small{
-    font-size:10px;
+    font-size:9px;
+  }
+
+  .hero{
+    min-height:auto;
+  }
+
+  .hero-grid{
+    min-height:auto;
+    padding:65px 0 95px;
   }
 
   .hero h1{
-    font-size:39px;
+    font-size:42px;
+    letter-spacing:-1.6px;
   }
 
-  .hero p{
-    font-size:16px;
+  .hero-description{
+    font-size:15px;
   }
 
-  .container{
-    padding:60px 16px;
+  .hero-photo-badge{
+    left:12px;
+    bottom:18px;
   }
 
   .quick{
-    margin-top:-30px;
-    padding:0 15px;
+    margin-top:-35px;
   }
 
-  .quick-item{
-    padding:18px;
-  }
-
-  .program-grid,
-  .teacher-grid{
+  .quick-grid{
+    width:calc(100% - 30px);
     grid-template-columns:1fr;
   }
 
+  .quick-item{
+    border-right:0;
+    border-bottom:1px solid var(--border);
+    padding:19px;
+  }
+
+  .quick-item:last-child{
+    border-bottom:0;
+  }
+
+  .section{
+    padding:70px 0;
+  }
+
+  .about-grid,
+  .vision-grid{
+    grid-template-columns:1fr;
+  }
+
+  .highlight{
+    grid-template-columns:1fr;
+  }
+
+  .program-grid{
+    grid-template-columns:1fr;
+  }
+
+  .teacher-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .gallery-feature img{
+    height:280px;
+  }
+
   .gallery-grid{
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:1fr 1fr;
   }
 
   .footer-main{
     grid-template-columns:1fr;
     gap:30px;
   }
+}
+
+@media(max-width:480px){
+
+  .hero h1{
+    font-size:36px;
+  }
+
+  .hero-buttons{
+    flex-direction:column;
+  }
+
+  .hero-buttons .btn{
+    width:100%;
+  }
+
+  .teacher-grid{
+    grid-template-columns:1fr;
+  }
+
+  .gallery-grid{
+    gap:10px;
+  }
+
+  .gallery-feature-caption{
+    padding:50px 17px 17px;
+  }
+
+  .gallery-feature-caption strong{
+    font-size:17px;
+  }
 
   .agenda-item{
     align-items:flex-start;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  *,
+  *::before,
+  *::after{
+    scroll-behavior:auto!important;
+    animation:none!important;
+    transition:none!important;
   }
 }
 </style>
@@ -1014,11 +1446,15 @@ footer{
 
 <body>
 
-<!-- TOP BAR -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- TOPBAR -->
 <div class="topbar">
   <div class="topbar-inner">
-    <span>Website Resmi SDN Sukasari</span>
-    <span>📧 sdn1sukasari@yahoo.com</span>
+    <span>Website Resmi SDN Sukasari • Galanggang • Batujajar</span>
+    <a href="mailto:sdn1sukasari@yahoo.com">
+      ✉️ sdn1sukasari@yahoo.com
+    </a>
   </div>
 </div>
 
@@ -1027,16 +1463,27 @@ footer{
   <div class="nav-inner">
 
     <a href="#beranda" class="logo">
-      <div class="logo-mark">SDN</div>
+      <div class="logo-mark">
+        <img
+          src="SUKASARI=PREVIEW.jpg"
+          alt="SDN Sukasari"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+        >
+        <span class="logo-mark-fallback" style="display:none;">SDN</span>
+      </div>
+
       <div class="logo-text">
         <strong>SDN SUKASARI</strong>
         <small>Galanggang • Batujajar</small>
       </div>
     </a>
 
-    <button class="menu-btn" id="menuBtn" aria-label="Buka menu">
-      ☰
-    </button>
+    <button
+      class="menu-btn"
+      id="menuBtn"
+      aria-label="Buka menu"
+      aria-expanded="false"
+    >☰</button>
 
     <ul class="nav-links" id="navLinks">
       <li><a href="#beranda">Beranda</a></li>
@@ -1045,7 +1492,7 @@ footer{
       <li><a href="#program">Program</a></li>
       <li><a href="#berita">Berita</a></li>
       <li><a href="#galeri">Galeri</a></li>
-      <li><a href="#kontak">Kontak</a></li>
+      <li><a href="#kontak" class="nav-cta">Kontak</a></li>
     </ul>
 
   </div>
@@ -1053,45 +1500,52 @@ footer{
 
 <!-- HERO -->
 <header class="hero" id="beranda">
-  <div class="hero-inner">
+  <div class="hero-grid">
 
-    <div>
+    <div class="hero-content">
+
       <div class="hero-badge">
-        🎓 Website Resmi Sekolah
+        <span class="hero-badge-dot"></span>
+        WEBSITE RESMI SEKOLAH
       </div>
 
       <h1>
-        Selamat Datang di<br>
+        Selamat Datang di
         <span>SDN Sukasari</span>
       </h1>
 
-      <p>
+      <p class="hero-description">
         Membangun generasi yang berkarakter, berprestasi,
-        berwawasan, dan siap menghadapi masa depan melalui
-        pendidikan yang berkualitas.
+        berwawasan, mandiri, dan siap menghadapi masa depan
+        melalui pendidikan yang berkualitas.
       </p>
 
       <div class="hero-buttons">
         <a href="#profil" class="btn btn-primary">
-          🏫 Profil Sekolah
+          🏫 Kenal Sekolah
         </a>
 
-        <a href="#kontak" class="btn btn-outline">
-          📞 Hubungi Sekolah
+        <a href="#galeri" class="btn btn-outline">
+          📸 Lihat Galeri
         </a>
       </div>
+
     </div>
 
-    <div class="hero-card">
-      <div class="school-emblem">
-        LOGO<br>SEKOLAH
+    <div class="hero-photo-wrap">
+
+      <div class="hero-photo">
+        <img
+          src="SUKASARI=PREVIEW.jpg"
+          alt="Foto SDN Sukasari"
+        >
+
+        <div class="hero-photo-badge">
+          <strong>SDN SUKASARI</strong>
+          <span>Galanggang, Batujajar</span>
+        </div>
       </div>
 
-      <h3>SDN SUKASARI</h3>
-      <p>
-        Jl. Galanggang RT 02 RW 16<br>
-        Desa Galanggang, Batujajar
-      </p>
     </div>
 
   </div>
@@ -1113,7 +1567,7 @@ footer{
       <div class="quick-icon">📚</div>
       <div>
         <strong>Program Pendidikan</strong>
-        <span>Kegiatan pembelajaran sekolah</span>
+        <span>Pembelajaran & pengembangan siswa</span>
       </div>
     </div>
 
@@ -1129,86 +1583,108 @@ footer{
 </section>
 
 <!-- PROFIL -->
-<section class="container" id="profil">
+<section class="section" id="profil">
+  <div class="container">
 
-  <div class="section-head">
-    <span class="section-label">Profil Sekolah</span>
-    <h2>Mengenal SDN Sukasari</h2>
-    <p>
-      Ruang informasi resmi sekolah untuk peserta didik,
-      orang tua, guru, tenaga kependidikan, dan masyarakat.
-    </p>
-  </div>
-
-  <div class="about-grid">
-
-    <div class="info-card">
-      <h3>🏫 Tentang Sekolah</h3>
-
+    <div class="section-head reveal">
+      <span class="section-label">Profil Sekolah</span>
+      <h2>Mengenal SDN Sukasari</h2>
       <p>
-        SDN Sukasari merupakan satuan pendidikan dasar yang
-        berada di wilayah Desa Galanggang, Kecamatan Batujajar.
-        Website ini menjadi media informasi dan komunikasi
-        sekolah kepada masyarakat.
+        Ruang informasi resmi sekolah untuk peserta didik,
+        orang tua, guru, tenaga kependidikan, dan masyarakat.
       </p>
-
-      <div class="highlight-box">
-        <strong>Alamat Sekolah</strong><br>
-        Jl. Galanggang RT 02 RW 16,
-        Desa Galanggang, Batujajar.
-      </div>
     </div>
 
-    <div class="info-card">
-      <h3>🌱 Pendidikan & Karakter</h3>
+    <div class="about-grid">
 
-      <p>
-        Sekolah berkomitmen menciptakan lingkungan belajar
-        yang aman, nyaman, aktif, dan mendukung perkembangan
-        akademik maupun karakter peserta didik.
-      </p>
+      <div class="about-main reveal">
+        <h3>🏫 Tentang Sekolah</h3>
 
-      <div class="highlight-box">
-        <strong>Catatan:</strong><br>
-        Informasi sejarah, akreditasi, jumlah siswa, kepala
-        sekolah, dan data resmi lainnya dapat ditambahkan
-        setelah data sekolah tersedia.
+        <p>
+          SDN Sukasari merupakan satuan pendidikan dasar
+          yang berada di wilayah Desa Galanggang, Kecamatan
+          Batujajar. Website ini menjadi media informasi dan
+          komunikasi sekolah kepada masyarakat.
+        </p>
+
+        <div class="highlight">
+
+          <div class="highlight-item">
+            <strong>SDN</strong>
+            <span>Satuan Pendidikan Dasar</span>
+          </div>
+
+          <div class="highlight-item">
+            <strong>Galanggang</strong>
+            <span>Wilayah Sekolah</span>
+          </div>
+
+          <div class="highlight-item">
+            <strong>Batujajar</strong>
+            <span>Wilayah Kecamatan</span>
+          </div>
+
+        </div>
       </div>
+
+      <div class="about-side">
+
+        <div class="mini-card reveal">
+          <div class="mini-card-icon">🌱</div>
+          <h3>Pendidikan Karakter</h3>
+          <p>
+            Mendorong peserta didik tumbuh dengan sikap
+            disiplin, tanggung jawab, gotong royong,
+            dan kepedulian.
+          </p>
+        </div>
+
+        <div class="mini-card reveal">
+          <div class="mini-card-icon">💡</div>
+          <h3>Pembelajaran Aktif</h3>
+          <p>
+            Menciptakan proses belajar yang aktif,
+            kreatif, bermakna, dan menyenangkan.
+          </p>
+        </div>
+
+      </div>
+
     </div>
 
   </div>
 </section>
 
 <!-- VISI MISI -->
-<section class="vision-section" id="visi">
+<section class="section white" id="visi">
   <div class="container">
 
-    <div class="section-head">
+    <div class="section-head reveal">
       <span class="section-label">Arah Pendidikan</span>
       <h2>Visi & Misi</h2>
       <p>
-        Bagian ini dapat disesuaikan dengan visi dan misi resmi
-        SDN Sukasari.
+        Landasan pengembangan pendidikan dan karakter
+        peserta didik SDN Sukasari.
       </p>
     </div>
 
     <div class="vision-grid">
 
-      <div class="vision-card">
-        <div class="number">01</div>
+      <div class="vision-card reveal">
+        <div class="vision-number">01</div>
 
         <h3>Visi</h3>
 
         <p>
-          Menjadi sekolah dasar yang mampu memberikan layanan
-          pendidikan berkualitas serta membentuk peserta didik
-          yang berkarakter, berprestasi, mandiri, dan peduli
-          terhadap lingkungan.
+          Menjadi sekolah dasar yang mampu memberikan
+          layanan pendidikan berkualitas serta membentuk
+          peserta didik yang berkarakter, berprestasi,
+          mandiri, dan peduli terhadap lingkungan.
         </p>
       </div>
 
-      <div class="vision-card">
-        <div class="number">02</div>
+      <div class="vision-card reveal">
+        <div class="vision-number">02</div>
 
         <h3>Misi</h3>
 
@@ -1217,101 +1693,105 @@ footer{
           <li>Menumbuhkan karakter positif dan sikap bertanggung jawab.</li>
           <li>Mendorong potensi dan kreativitas peserta didik.</li>
           <li>Membangun lingkungan sekolah yang aman dan nyaman.</li>
-          <li>Meningkatkan kerja sama antara sekolah dan masyarakat.</li>
+          <li>Meningkatkan kerja sama sekolah dan masyarakat.</li>
         </ul>
       </div>
 
     </div>
+
   </div>
 </section>
 
 <!-- PROGRAM -->
-<section class="container" id="program">
+<section class="section" id="program">
+  <div class="container">
 
-  <div class="section-head">
-    <span class="section-label">Kegiatan Pendidikan</span>
-    <h2>Program Sekolah</h2>
-    <p>
-      Contoh kategori program yang nantinya dapat disesuaikan
-      dengan program resmi sekolah.
-    </p>
-  </div>
-
-  <div class="program-grid">
-
-    <article class="program-card">
-      <div class="program-icon">📖</div>
-      <h3>Pembelajaran</h3>
+    <div class="section-head reveal">
+      <span class="section-label">Kegiatan Pendidikan</span>
+      <h2>Program Sekolah</h2>
       <p>
-        Mendukung proses pembelajaran yang aktif, kreatif,
-        dan menyenangkan.
+        Berbagai bidang pengembangan untuk mendukung
+        pembelajaran dan karakter peserta didik.
       </p>
-    </article>
+    </div>
 
-    <article class="program-card">
-      <div class="program-icon">🎨</div>
-      <h3>Kreativitas</h3>
-      <p>
-        Mendorong siswa mengembangkan bakat, minat,
-        kreativitas, dan keterampilan.
-      </p>
-    </article>
+    <div class="program-grid">
 
-    <article class="program-card">
-      <div class="program-icon">🏃</div>
-      <h3>Olahraga</h3>
-      <p>
-        Mengembangkan kebugaran, sportivitas, dan kerja sama
-        melalui kegiatan olahraga.
-      </p>
-    </article>
+      <article class="program-card reveal">
+        <div class="program-icon">📖</div>
+        <h3>Pembelajaran</h3>
+        <p>
+          Mendukung proses pembelajaran yang aktif,
+          kreatif, dan menyenangkan.
+        </p>
+      </article>
 
-    <article class="program-card">
-      <div class="program-icon">🌱</div>
-      <h3>Peduli Lingkungan</h3>
-      <p>
-        Menanamkan kebiasaan menjaga kebersihan dan
-        kelestarian lingkungan sekolah.
-      </p>
-    </article>
+      <article class="program-card reveal">
+        <div class="program-icon">🎨</div>
+        <h3>Kreativitas</h3>
+        <p>
+          Mendorong siswa mengembangkan bakat,
+          minat, kreativitas, dan keterampilan.
+        </p>
+      </article>
 
-    <article class="program-card">
-      <div class="program-icon">🤝</div>
-      <h3>Karakter</h3>
-      <p>
-        Membentuk sikap disiplin, tanggung jawab, gotong
-        royong, dan saling menghargai.
-      </p>
-    </article>
+      <article class="program-card reveal">
+        <div class="program-icon">🏃</div>
+        <h3>Olahraga</h3>
+        <p>
+          Mengembangkan kebugaran, sportivitas,
+          dan kerja sama melalui kegiatan olahraga.
+        </p>
+      </article>
 
-    <article class="program-card">
-      <div class="program-icon">🏆</div>
-      <h3>Prestasi</h3>
-      <p>
-        Memberikan ruang bagi peserta didik untuk
-        mengembangkan potensi dan prestasinya.
-      </p>
-    </article>
+      <article class="program-card reveal">
+        <div class="program-icon">🌱</div>
+        <h3>Peduli Lingkungan</h3>
+        <p>
+          Menanamkan kebiasaan menjaga kebersihan
+          dan kelestarian lingkungan sekolah.
+        </p>
+      </article>
+
+      <article class="program-card reveal">
+        <div class="program-icon">🤝</div>
+        <h3>Karakter</h3>
+        <p>
+          Membentuk sikap disiplin, tanggung jawab,
+          gotong royong, dan saling menghargai.
+        </p>
+      </article>
+
+      <article class="program-card reveal">
+        <div class="program-icon">🏆</div>
+        <h3>Prestasi</h3>
+        <p>
+          Memberikan ruang bagi peserta didik
+          untuk mengembangkan potensi dan prestasi.
+        </p>
+      </article>
+
+    </div>
 
   </div>
 </section>
 
 <!-- GURU -->
-<section class="teacher-section" id="guru">
+<section class="section white" id="guru">
   <div class="container">
 
-    <div class="section-head">
+    <div class="section-head reveal">
       <span class="section-label">Tenaga Pendidikan</span>
       <h2>Guru & Tenaga Kependidikan</h2>
       <p>
-        Data nama dan foto tenaga pendidik dapat dimasukkan
+        Data nama dan foto tenaga pendidik dapat ditambahkan
         setelah data resmi sekolah tersedia.
       </p>
     </div>
 
     <div class="teacher-grid">
 
-      <div class="teacher-card">
+      <div class="teacher-card reveal">
         <div class="teacher-photo">👨‍🏫</div>
         <div class="teacher-info">
           <h3>Data Kepala Sekolah</h3>
@@ -1319,7 +1799,7 @@ footer{
         </div>
       </div>
 
-      <div class="teacher-card">
+      <div class="teacher-card reveal">
         <div class="teacher-photo">👩‍🏫</div>
         <div class="teacher-info">
           <h3>Data Guru</h3>
@@ -1327,7 +1807,7 @@ footer{
         </div>
       </div>
 
-      <div class="teacher-card">
+      <div class="teacher-card reveal">
         <div class="teacher-photo">👨‍🏫</div>
         <div class="teacher-info">
           <h3>Data Guru</h3>
@@ -1335,7 +1815,7 @@ footer{
         </div>
       </div>
 
-      <div class="teacher-card">
+      <div class="teacher-card reveal">
         <div class="teacher-photo">👩‍💼</div>
         <div class="teacher-info">
           <h3>Data Tendik</h3>
@@ -1344,85 +1824,106 @@ footer{
       </div>
 
     </div>
+
   </div>
 </section>
 
 <!-- BERITA -->
-<section class="container" id="berita">
+<section class="section" id="berita">
+  <div class="container">
 
-  <div class="section-head">
-    <span class="section-label">Informasi Sekolah</span>
-    <h2>Berita & Pengumuman</h2>
-    <p>
-      Tempat untuk menyampaikan informasi terbaru dari sekolah.
-    </p>
-  </div>
+    <div class="section-head reveal">
+      <span class="section-label">Informasi Sekolah</span>
+      <h2>Berita & Pengumuman</h2>
+      <p>
+        Ruang untuk menampilkan informasi dan dokumentasi
+        terbaru dari SDN Sukasari.
+      </p>
+    </div>
 
-  <div class="news-grid">
+    <div class="news-grid">
 
-    <article class="news-card">
-      <div class="news-image">📢</div>
+      <article class="news-card reveal">
 
-      <div class="news-body">
-        <span class="news-date">PENGUMUMAN</span>
+        <div class="news-image">
+          <img
+            src="SUKASARI=PREVIEW.jpg"
+            alt="SDN Sukasari"
+          >
+        </div>
 
-        <h3>Informasi Sekolah</h3>
+        <div class="news-body">
+          <span class="news-tag">SEKOLAH</span>
+          <h3>Selamat Datang di SDN Sukasari</h3>
+          <p>
+            Website resmi sekolah sebagai pusat informasi
+            profil, program, kegiatan, dan komunikasi sekolah.
+          </p>
+        </div>
 
-        <p>
-          Informasi terbaru dari SDN Sukasari akan ditampilkan
-          pada bagian ini.
-        </p>
-      </div>
-    </article>
+      </article>
 
-    <article class="news-card">
-      <div class="news-image">🎓</div>
+      <article class="news-card reveal">
 
-      <div class="news-body">
-        <span class="news-date">KEGIATAN</span>
+        <div class="news-image">
+          <img
+            src="SUKASARI=PREVIEW.jpg"
+            alt="Lingkungan SDN Sukasari"
+          >
+        </div>
 
-        <h3>Kegiatan Peserta Didik</h3>
+        <div class="news-body">
+          <span class="news-tag">KEGIATAN</span>
+          <h3>Dokumentasi Kegiatan Sekolah</h3>
+          <p>
+            Dokumentasi kegiatan peserta didik dan sekolah
+            dapat terus ditambahkan ke galeri.
+          </p>
+        </div>
 
-        <p>
-          Dokumentasi dan informasi kegiatan sekolah dapat
-          ditambahkan di sini.
-        </p>
-      </div>
-    </article>
+      </article>
 
-    <article class="news-card">
-      <div class="news-image">🏆</div>
+      <article class="news-card reveal">
 
-      <div class="news-body">
-        <span class="news-date">PRESTASI</span>
+        <div class="news-image">
+          <img
+            src="SUKASARI=PREVIEW.jpg"
+            alt="SDN Sukasari Galanggang"
+          >
+        </div>
 
-        <h3>Prestasi Sekolah</h3>
+        <div class="news-body">
+          <span class="news-tag">INFORMASI</span>
+          <h3>Informasi SDN Sukasari</h3>
+          <p>
+            Informasi terbaru sekolah dapat diperbarui
+            sesuai kebutuhan pengelola website.
+          </p>
+        </div>
 
-        <p>
-          Prestasi peserta didik dan sekolah dapat ditampilkan
-          pada bagian ini.
-        </p>
-      </div>
-    </article>
+      </article>
+
+    </div>
 
   </div>
 </section>
 
 <!-- AGENDA -->
-<section class="agenda-section">
+<section class="section blue-light">
   <div class="container">
 
-    <div class="section-head">
+    <div class="section-head reveal">
       <span class="section-label">Kalender Sekolah</span>
       <h2>Agenda Kegiatan</h2>
       <p>
-        Jadwal kegiatan sekolah dapat diperbarui secara berkala.
+        Jadwal kegiatan sekolah dapat diperbarui
+        secara berkala.
       </p>
     </div>
 
     <div class="agenda-list">
 
-      <div class="agenda-item">
+      <div class="agenda-item reveal">
         <div class="agenda-date">
           <strong>01</strong>
           <span>Agenda</span>
@@ -1430,11 +1931,14 @@ footer{
 
         <div class="agenda-info">
           <h3>Kegiatan Sekolah</h3>
-          <p>Jadwal dan informasi kegiatan akan diperbarui oleh sekolah.</p>
+          <p>
+            Jadwal dan informasi kegiatan akan
+            diperbarui oleh sekolah.
+          </p>
         </div>
       </div>
 
-      <div class="agenda-item">
+      <div class="agenda-item reveal">
         <div class="agenda-date">
           <strong>02</strong>
           <span>Agenda</span>
@@ -1442,11 +1946,14 @@ footer{
 
         <div class="agenda-info">
           <h3>Kegiatan Peserta Didik</h3>
-          <p>Informasi kegiatan peserta didik dan pembelajaran.</p>
+          <p>
+            Informasi kegiatan peserta didik
+            dan pembelajaran.
+          </p>
         </div>
       </div>
 
-      <div class="agenda-item">
+      <div class="agenda-item reveal">
         <div class="agenda-date">
           <strong>03</strong>
           <span>Agenda</span>
@@ -1454,87 +1961,112 @@ footer{
 
         <div class="agenda-info">
           <h3>Kegiatan Sekolah Lainnya</h3>
-          <p>Agenda resmi sekolah dapat ditampilkan di bagian ini.</p>
+          <p>
+            Agenda resmi sekolah dapat ditampilkan
+            di bagian ini.
+          </p>
         </div>
       </div>
 
     </div>
+
   </div>
 </section>
 
 <!-- GALERI -->
-<section class="container" id="galeri">
+<section class="section white" id="galeri">
+  <div class="container">
 
-  <div class="section-head">
-    <span class="section-label">Dokumentasi</span>
-    <h2>Galeri Sekolah</h2>
-    <p>
-      Foto kegiatan sekolah dapat menggantikan placeholder
-      setelah dokumentasi tersedia.
-    </p>
-  </div>
-
-  <div class="gallery-grid">
-
-    <div class="gallery-item">
-      <span>🏫</span>
-      <small>Gedung Sekolah</small>
+    <div class="section-head reveal">
+      <span class="section-label">Dokumentasi</span>
+      <h2>Galeri SDN Sukasari</h2>
+      <p>
+        Dokumentasi asli sekolah akan terus ditambahkan
+        seiring foto tersedia.
+      </p>
     </div>
 
-    <div class="gallery-item">
-      <span>📚</span>
-      <small>Kegiatan Pembelajaran</small>
+    <div
+      class="gallery-feature reveal"
+      data-lightbox="SUKASARI=PREVIEW.jpg"
+    >
+      <img
+        src="SUKASARI=PREVIEW.jpg"
+        alt="Foto asli SDN Sukasari"
+      >
+
+      <div class="gallery-feature-caption">
+        <strong>SDN Sukasari</strong>
+        <span>Dokumentasi sekolah • Galanggang, Batujajar</span>
+      </div>
     </div>
 
-    <div class="gallery-item">
-      <span>🎨</span>
-      <small>Kegiatan Kreativitas</small>
-    </div>
+    <div class="gallery-grid">
 
-    <div class="gallery-item">
-      <span>🏃</span>
-      <small>Kegiatan Olahraga</small>
-    </div>
+      <div
+        class="gallery-item reveal"
+        data-lightbox="SUKASARI=PREVIEW.jpg"
+      >
+        <img
+          src="SUKASARI=PREVIEW.jpg"
+          alt="Gedung SDN Sukasari"
+        >
+        <div class="gallery-overlay">Gedung Sekolah</div>
+      </div>
 
-    <div class="gallery-item">
-      <span>🌱</span>
-      <small>Lingkungan Sekolah</small>
-    </div>
+      <div
+        class="gallery-item reveal"
+        data-lightbox="SUKASARI=PREVIEW.jpg"
+      >
+        <img
+          src="SUKASARI=PREVIEW.jpg"
+          alt="Lingkungan sekolah"
+        >
+        <div class="gallery-overlay">Lingkungan Sekolah</div>
+      </div>
 
-    <div class="gallery-item">
-      <span>🎓</span>
-      <small>Kegiatan Siswa</small>
-    </div>
+      <div
+        class="gallery-item reveal"
+        data-lightbox="SUKASARI=PREVIEW.jpg"
+      >
+        <img
+          src="SUKASARI=PREVIEW.jpg"
+          alt="Kegiatan sekolah"
+        >
+        <div class="gallery-overlay">Kegiatan Sekolah</div>
+      </div>
 
-    <div class="gallery-item">
-      <span>🏆</span>
-      <small>Prestasi</small>
-    </div>
+      <div
+        class="gallery-item reveal"
+        data-lightbox="SUKASARI=PREVIEW.jpg"
+      >
+        <img
+          src="SUKASARI=PREVIEW.jpg"
+          alt="Dokumentasi SDN Sukasari"
+        >
+        <div class="gallery-overlay">Dokumentasi</div>
+      </div>
 
-    <div class="gallery-item">
-      <span>🤝</span>
-      <small>Kegiatan Bersama</small>
     </div>
 
   </div>
 </section>
 
 <!-- KONTAK -->
-<section class="contact-section" id="kontak">
-
+<section class="section" id="kontak">
   <div class="container">
 
-    <div class="section-head">
+    <div class="section-head reveal">
       <span class="section-label">Hubungi Sekolah</span>
       <h2>Kontak SDN Sukasari</h2>
       <p>
-        Informasi kontak resmi sekolah.
+        Informasi kontak dan lokasi sekolah.
       </p>
     </div>
 
     <div class="contact-grid">
 
-      <div class="contact-card">
+      <div class="contact-card reveal">
 
         <h3>📞 Informasi Sekolah</h3>
 
@@ -1542,7 +2074,6 @@ footer{
 
           <div class="contact-item">
             <div class="contact-icon">🏫</div>
-
             <div>
               <strong>Nama Sekolah</strong>
               <span>SDN Sukasari</span>
@@ -1551,7 +2082,6 @@ footer{
 
           <div class="contact-item">
             <div class="contact-icon">📍</div>
-
             <div>
               <strong>Alamat</strong>
               <span>
@@ -1563,7 +2093,6 @@ footer{
 
           <div class="contact-item">
             <div class="contact-icon">✉️</div>
-
             <div>
               <strong>Email</strong>
               <a href="mailto:sdn1sukasari@yahoo.com">
@@ -1576,7 +2105,7 @@ footer{
 
       </div>
 
-      <div class="map-box">
+      <div class="map-box reveal">
 
         <div class="map-content">
 
@@ -1589,12 +2118,10 @@ footer{
             Desa Galanggang, Batujajar.
           </p>
 
-          <br>
-
           <a
             href="https://www.google.com/maps/search/?api=1&query=SDN%20Sukasari%20Galanggang%20Batujajar"
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
             class="btn btn-primary"
           >
             🗺️ Buka Google Maps
@@ -1605,6 +2132,7 @@ footer{
       </div>
 
     </div>
+
   </div>
 </section>
 
@@ -1615,7 +2143,6 @@ footer{
 
     <div class="footer-brand">
       <h3>SDN SUKASARI</h3>
-
       <p>
         Website resmi SDN Sukasari sebagai media informasi
         sekolah dan sarana komunikasi dengan masyarakat.
@@ -1624,7 +2151,6 @@ footer{
 
     <div class="footer-col">
       <h4>Navigasi</h4>
-
       <a href="#beranda">Beranda</a>
       <a href="#profil">Profil</a>
       <a href="#visi">Visi & Misi</a>
@@ -1643,6 +2169,14 @@ footer{
       <a href="#kontak">
         Galanggang, Batujajar
       </a>
+
+      <a
+        href="https://www.google.com/maps/search/?api=1&query=SDN%20Sukasari%20Galanggang%20Batujajar"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Lihat Lokasi →
+      </a>
     </div>
 
   </div>
@@ -1653,48 +2187,251 @@ footer{
 
 </footer>
 
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+
+  <button
+    class="lightbox-close"
+    id="lightboxClose"
+    aria-label="Tutup foto"
+  >×</button>
+
+  <img
+    id="lightboxImage"
+    src=""
+    alt="Preview foto SDN Sukasari"
+  >
+
+</div>
+
 <!-- BACK TO TOP -->
-<button class="top-btn" id="topBtn" aria-label="Kembali ke atas">
+<button
+  class="top-btn"
+  id="topBtn"
+  aria-label="Kembali ke atas"
+>
   ↑
 </button>
 
 <script>
 
-/* MOBILE MENU */
+/* =========================
+   MOBILE MENU
+========================= */
+
 const menuBtn = document.getElementById("menuBtn");
 const navLinks = document.getElementById("navLinks");
 
 menuBtn.addEventListener("click", () => {
-  navLinks.classList.toggle("active");
+
+  const active = navLinks.classList.toggle("active");
+
+  menuBtn.setAttribute(
+    "aria-expanded",
+    active ? "true" : "false"
+  );
+
 });
 
 document.querySelectorAll(".nav-links a").forEach(link => {
+
   link.addEventListener("click", () => {
+
     navLinks.classList.remove("active");
+
+    menuBtn.setAttribute(
+      "aria-expanded",
+      "false"
+    );
+
   });
+
 });
 
-/* BACK TO TOP */
-const topBtn = document.getElementById("topBtn");
+
+/* =========================
+   SCROLL PROGRESS
+========================= */
+
+const scrollProgress =
+  document.getElementById("scrollProgress");
+
+window.addEventListener("scroll", () => {
+
+  const scrollTop = window.scrollY;
+
+  const height =
+    document.documentElement.scrollHeight -
+    document.documentElement.clientHeight;
+
+  const progress =
+    height > 0
+      ? (scrollTop / height) * 100
+      : 0;
+
+  scrollProgress.style.width =
+    progress + "%";
+
+});
+
+
+/* =========================
+   BACK TO TOP
+========================= */
+
+const topBtn =
+  document.getElementById("topBtn");
 
 window.addEventListener("scroll", () => {
 
   if(window.scrollY > 500){
+
     topBtn.classList.add("show");
+
   }else{
+
     topBtn.classList.remove("show");
+
   }
 
 });
 
 topBtn.addEventListener("click", () => {
+
   window.scrollTo({
     top:0,
     behavior:"smooth"
   });
+
 });
 
-/* YEAR */
+
+/* =========================
+   REVEAL ANIMATION
+========================= */
+
+const revealElements =
+  document.querySelectorAll(".reveal");
+
+const revealObserver =
+  new IntersectionObserver(
+    entries => {
+
+      entries.forEach(entry => {
+
+        if(entry.isIntersecting){
+
+          entry.target.classList.add("visible");
+
+          revealObserver.unobserve(
+            entry.target
+          );
+
+        }
+
+      });
+
+    },
+    {
+      threshold:.12
+    }
+  );
+
+revealElements.forEach(el => {
+  revealObserver.observe(el);
+});
+
+
+/* =========================
+   LIGHTBOX
+========================= */
+
+const lightbox =
+  document.getElementById("lightbox");
+
+const lightboxImage =
+  document.getElementById("lightboxImage");
+
+const lightboxClose =
+  document.getElementById("lightboxClose");
+
+document.querySelectorAll("[data-lightbox]").forEach(item => {
+
+  item.addEventListener("click", () => {
+
+    const image =
+      item.getAttribute("data-lightbox");
+
+    lightboxImage.src = image;
+
+    lightbox.classList.add("active");
+
+    lightbox.setAttribute(
+      "aria-hidden",
+      "false"
+    );
+
+    document.body.classList.add(
+      "no-scroll"
+    );
+
+  });
+
+});
+
+function closeLightbox(){
+
+  lightbox.classList.remove("active");
+
+  lightbox.setAttribute(
+    "aria-hidden",
+    "true"
+  );
+
+  lightboxImage.src = "";
+
+  document.body.classList.remove(
+    "no-scroll"
+  );
+
+}
+
+lightboxClose.addEventListener(
+  "click",
+  closeLightbox
+);
+
+lightbox.addEventListener(
+  "click",
+  event => {
+
+    if(event.target === lightbox){
+
+      closeLightbox();
+
+    }
+
+  }
+);
+
+document.addEventListener(
+  "keydown",
+  event => {
+
+    if(event.key === "Escape"){
+
+      closeLightbox();
+
+    }
+
+  }
+);
+
+
+/* =========================
+   YEAR
+========================= */
+
 document.getElementById("year").textContent =
   new Date().getFullYear();
 
